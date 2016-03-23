@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Kieran Brawley. Matric No:S1433740-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.kieran.trafficrssprojectxmlpullparser.MainMenu"
+    tools:showIn="@layout/activity_main_menu">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/homeText"
+        android:id="@+id/homeText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recentUpdatesButton"
+        android:text="@string/recentUpdatesButton"
+        android:layout_below="@+id/homeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/searchButton"
+        android:id="@+id/currentRoadworks"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/recentUpdatesButton"
+        android:layout_alignEnd="@+id/recentUpdatesButton"
+        android:layout_alignStart="@+id/recentUpdatesButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="S1433740"
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="72dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plannedRoadworks"
+        android:id="@+id/plannedRoadworks"
+        android:layout_below="@+id/currentRoadworks"
+        android:layout_marginTop="25dp"
+        android:layout_alignEnd="@+id/currentRoadworks"
+        android:layout_alignStart="@+id/currentRoadworks" />
+
+</RelativeLayout>
