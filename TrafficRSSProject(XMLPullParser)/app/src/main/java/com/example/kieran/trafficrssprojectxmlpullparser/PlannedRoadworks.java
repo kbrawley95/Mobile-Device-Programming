@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,8 @@ public class PlannedRoadworks extends AppCompatActivity {
     ArrayList<RSSItem> rssItemsArray;
     RSSAdapter rssAdapter;
     ListView rssItemsList;
+
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,24 @@ public class PlannedRoadworks extends AppCompatActivity {
 
         });
 
+        searchView=(SearchView)findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+
+                rssAdapter.getFilter().filter(query);
+
+                return false;
+            }
+        });
+
     }
+
 
     private void DownloadFile() {
         Thread thread = new Thread(new Runnable() {

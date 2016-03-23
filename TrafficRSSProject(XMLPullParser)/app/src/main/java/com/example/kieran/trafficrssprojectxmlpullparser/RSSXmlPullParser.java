@@ -45,7 +45,7 @@ public class RSSXmlPullParser {
                     case XmlPullParser.END_TAG:
                         if (name.equalsIgnoreCase(KEY_TITLE))
                         {
-                            RSSItem temp = new RSSItem();
+                            RSSItem temp = new RSSItem("this", "this","this","this");
                             result.add(temp);
                             result.get(counter).setTitle(text);
                         }

@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.webkit.WebView;
 
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
    private void DownloadFile() {
        Thread thread = new Thread(new Runnable() {
