@@ -59,12 +59,22 @@ public class PlannedRoadworks extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String query) {
 
-                rssAdapter.getFilter().filter(query);
+                ArrayList<RSSItem> shit = new ArrayList<RSSItem>();
+                for (int i = 0; i < rssItemsArray.size(); i++)
+                {
+                    if (rssItemsArray.get(i).getTitle().toLowerCase().contains(query.toLowerCase()))
+                    {
+                        shit.add(rssItemsArray.get(i));
+                    }
+                }
+                rssAdapter = new RSSAdapter(PlannedRoadworks.this, shit);
+
+                rssItemsList.setAdapter(rssAdapter);
+                rssItemsList.deferNotifyDataSetChanged();
 
                 return false;
             }
         });
-
     }
 
 
@@ -85,6 +95,7 @@ public class PlannedRoadworks extends AppCompatActivity {
                             stuff[i]=rssItemsArray.get(i).getLink();
                             stuff[i]=rssItemsArray.get(i).getPubDate();
                         }
+                        Log.i("MyApp", "Download Shit");
                         rssAdapter=new RSSAdapter(PlannedRoadworks.this, rssItemsArray);
 
                         PlannedRoadworks.this.runOnUiThread(new Runnable() {
