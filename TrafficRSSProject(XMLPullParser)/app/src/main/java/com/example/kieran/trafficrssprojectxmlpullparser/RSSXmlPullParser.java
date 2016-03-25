@@ -1,6 +1,7 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
 import android.content.Context;
+import android.text.Html;
 import android.util.Log;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -30,6 +31,7 @@ public class RSSXmlPullParser {
         List<RSSItem> result = new ArrayList<RSSItem>();
         int event;
         String text = null;
+        String textChar;
         try
         {
            event = myParser.getEventType();
@@ -43,20 +45,19 @@ public class RSSXmlPullParser {
                         text = myParser.getText();
                         break;
                     case XmlPullParser.END_TAG:
-                        if (name.equalsIgnoreCase(KEY_TITLE))
+                        if (name.equals(KEY_TITLE))
                         {
-                            RSSItem temp = new RSSItem("this", "this","this","this");
+                            RSSItem temp = new RSSItem("", "","","");
                             result.add(temp);
                             result.get(counter).setTitle(text);
                         }
-                        else if (name.equalsIgnoreCase(KEY_DESCRIPTION))
-                        {
-                                result.get(counter).setDescription(text);
+                        else if (name.equals(KEY_DESCRIPTION)) {
+                                result.get(counter).setDescription(Html.fromHtml(text).toString());
                         }
-                        else if (name.equalsIgnoreCase(KEY_LINK))
+                        else if (name.equals(KEY_LINK))
                         {
                             result.get(counter).setLink(text);
-                        } else if (name.equalsIgnoreCase(KEY_PUBLICATION_DATE))
+                        } else if (name.equals(KEY_PUBLICATION_DATE))
                         {
                             result.get(counter).setPubDate(text);
                             counter++;
