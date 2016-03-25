@@ -63,6 +63,9 @@ public class PlannedRoadworks extends AppCompatActivity {
                 AlertDialog alert=builder.create();
                 alert.show();
 
+                rssItemsList.setAdapter(rssAdapter);
+                rssItemsList.deferNotifyDataSetChanged();
+
                 return true;
 
             }
@@ -78,18 +81,18 @@ public class PlannedRoadworks extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String query) {
 
-                ArrayList<RSSItem> shit = new ArrayList<RSSItem>();
+                ArrayList<RSSItem> filteredResults = new ArrayList<RSSItem>();
                 for (int i = 0; i < rssItemsArray.size(); i++) {
                     if (rssItemsArray.get(i).getTitle().toLowerCase().contains(query.toLowerCase())) {
-                        shit.add(rssItemsArray.get(i));
+                        filteredResults.add(rssItemsArray.get(i));
                     }
                 }
-                rssAdapter = new RSSAdapter(PlannedRoadworks.this, shit);
+                rssAdapter = new RSSAdapter(PlannedRoadworks.this, filteredResults);
 
                 rssItemsList.setAdapter(rssAdapter);
                 rssItemsList.deferNotifyDataSetChanged();
 
-                return false;
+                return true;
             }
         });
     }

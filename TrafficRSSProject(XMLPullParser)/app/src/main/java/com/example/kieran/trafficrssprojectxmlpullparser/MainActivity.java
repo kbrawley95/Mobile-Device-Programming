@@ -1,6 +1,8 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -8,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Debug;
+import android.provider.SyncStateContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         DownloadFile();
 
         //Get reference to our ListView
-        rssItemsList = (ListView)findViewById(R.id.rssList);
+        rssItemsList = (ListView) findViewById(R.id.rssList);
 
         //Set the click listener to launch the browser when a row is clicked.
         rssItemsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,9 +71,36 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    /*    if(!isNetworkAvailable()){
+            //Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Closing the App")
+                    .setMessage("No Internet Connection,check your settings")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    });
+            AlertDialog alert=builder.create();
+            alert.show();
+        }
 
 
     }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }*/
+
+
 
 
 
