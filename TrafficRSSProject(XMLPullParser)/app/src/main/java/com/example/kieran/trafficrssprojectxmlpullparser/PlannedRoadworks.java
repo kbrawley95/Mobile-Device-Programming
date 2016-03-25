@@ -1,5 +1,7 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,6 +51,23 @@ public class PlannedRoadworks extends AppCompatActivity {
 
         });
 
+        //Set the click listener to launch the browser when a row is clicked.
+        rssItemsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
+
+                String description=rssItemsArray.get(pos).getDescription();
+
+                AlertDialog.Builder builder=new AlertDialog.Builder(PlannedRoadworks.this);
+                builder.setMessage(description);
+                AlertDialog alert=builder.create();
+                alert.show();
+
+                return true;
+
+            }
+        });
+
         searchView=(SearchView)findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -60,10 +79,8 @@ public class PlannedRoadworks extends AppCompatActivity {
             public boolean onQueryTextChange(String query) {
 
                 ArrayList<RSSItem> shit = new ArrayList<RSSItem>();
-                for (int i = 0; i < rssItemsArray.size(); i++)
-                {
-                    if (rssItemsArray.get(i).getTitle().toLowerCase().contains(query.toLowerCase()))
-                    {
+                for (int i = 0; i < rssItemsArray.size(); i++) {
+                    if (rssItemsArray.get(i).getTitle().toLowerCase().contains(query.toLowerCase())) {
                         shit.add(rssItemsArray.get(i));
                     }
                 }
@@ -76,7 +93,6 @@ public class PlannedRoadworks extends AppCompatActivity {
             }
         });
     }
-
 
     private void DownloadFile() {
         Thread thread = new Thread(new Runnable() {

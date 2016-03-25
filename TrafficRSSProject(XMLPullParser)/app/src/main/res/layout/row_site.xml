@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14dp"
+        android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
         android:text="@string/titleText" />
@@ -20,9 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
+        android:textColor="#2E2E2E"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@id/homeText"
-        android:text="@string/descriptionText" />
+        android:text="@string/descriptionText"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +34,9 @@
         android:layout_below="@id/descriptionText"
         android:text="@string/linkText"
         android:textSize="12sp"
-        android:id="@+id/linkText"/>
+        android:textColor="#086A87"
+        android:id="@+id/linkText"
+        android:layout_marginTop="15dp"/>
 
 
     <TextView
@@ -41,6 +46,8 @@
         android:layout_below="@id/linkText"
         android:text="@string/pubDateText"
         android:textSize="12sp"
-        android:id="@+id/pubDateText"/>
+        android:textColor="#04B4AE"
+        android:id="@+id/pubDateText"
+        android:layout_marginTop="15dp"/>
 
 </RelativeLayout>

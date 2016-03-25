@@ -5,13 +5,13 @@
     <string name="descriptionText">Description</string>
     <string name="linkText">Link</string>
     <string name="pubDateText">Publication Date</string>
-    <string name="title_activity_main_menu">RSS Reader</string>
+    <string name="title_activity_main_menu">RSS Reader (S1433740)</string>
     <string name="recentUpdatesButton">Recent Updates</string>
     <string name="dateText">Date of Incident:</string>
     <string name="locationText">Location:</string>
     <string name="homeText">Traffic Scotland: RSS Reader</string>
     <string name="searchButton">Roadworks</string>
     <string name="plannedRoadworks">Planned Roadworks</string>
-    <string name="title_activity_planned_roadworks">PlannedRoadworks</string>
-    <string name="title_activity_current_roadworks">CurrentRoadworks</string>
+    <string name="title_activity_planned_roadworks">Planned Roadworks (S1433740)</string>
+    <string name="title_activity_current_roadworks">CurrentRoadworks (S1433740)</string>
 </resources>

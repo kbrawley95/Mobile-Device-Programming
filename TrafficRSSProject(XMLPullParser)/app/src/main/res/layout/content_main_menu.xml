@@ -13,23 +13,12 @@
     tools:context="com.example.kieran.trafficrssprojectxmlpullparser.MainMenu"
     tools:showIn="@layout/activity_main_menu">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/homeText"
-        android:id="@+id/homeText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp" />
-
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recentUpdatesButton"
         android:text="@string/recentUpdatesButton"
-        android:layout_below="@+id/homeText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp" />
 
@@ -42,16 +31,6 @@
         android:layout_below="@+id/recentUpdatesButton"
         android:layout_alignEnd="@+id/recentUpdatesButton"
         android:layout_alignStart="@+id/recentUpdatesButton" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="S1433740"
-        android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="72dp" />
 
     <Button
         android:layout_width="wrap_content"
