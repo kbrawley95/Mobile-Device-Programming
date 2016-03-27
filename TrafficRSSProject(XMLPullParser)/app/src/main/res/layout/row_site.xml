@@ -50,4 +50,17 @@
         android:id="@+id/pubDateText"
         android:layout_marginTop="15dp"/>
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_marginTop="15dp"
+    android:layout_below="@+id/pubDateText"
+    android:text="Press and Hold To Open In Google Maps"
+    android:textSize="13dp"
+    android:textStyle="bold"
+
+    android:textColor="#084B8A"
+    />
+
 </RelativeLayout>

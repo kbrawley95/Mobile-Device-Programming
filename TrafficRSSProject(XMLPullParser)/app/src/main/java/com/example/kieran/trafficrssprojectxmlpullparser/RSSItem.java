@@ -9,12 +9,14 @@ public class RSSItem {
     private String description;
     private String link;
     private String pubDate;
+    private String georssPoint;
 
-    public RSSItem(String title, String description, String link, String pubDate){
+    public RSSItem(String title, String description, String link, String pubDate, String georssPoint){
         this.title=title;
         this.description=description;
         this.link=link;
         this.pubDate=pubDate;
+        this.georssPoint=georssPoint;
     }
 
     public String getDescription() {
@@ -49,10 +51,18 @@ public class RSSItem {
         this.title = title;
     }
 
+    public String getGeorssPoint() {
+        return georssPoint;
+    }
+
+    public void setGeorssPoint(String georssPoint) {
+        this.georssPoint = georssPoint;
+    }
+
     @Override
     public String toString() {
         return "StackSite [name=" + title + ", description=" +description+ ", link="
-                + link + ", publication date=" + pubDate + "]";
+                + link + ", georss:point=" + georssPoint + ", publication date="  + pubDate + "]";
     }
 }
 

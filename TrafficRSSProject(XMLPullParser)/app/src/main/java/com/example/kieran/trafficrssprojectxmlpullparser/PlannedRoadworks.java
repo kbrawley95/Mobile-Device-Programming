@@ -15,7 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PlannedRoadworks extends AppCompatActivity {
 
@@ -56,7 +58,13 @@ public class PlannedRoadworks extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
 
-                String description=rssItemsArray.get(pos).getDescription();
+                String coords=rssItemsArray.get(pos).getGeorssPoint();
+                String uri = String.format("geo:"+ coords);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(intent);
+
+
+          /*      String description=rssItemsArray.get(pos).getDescription();
 
                 AlertDialog.Builder builder=new AlertDialog.Builder(PlannedRoadworks.this);
                 builder.setMessage(description);
@@ -64,7 +72,7 @@ public class PlannedRoadworks extends AppCompatActivity {
                 alert.show();
 
                 rssItemsList.setAdapter(rssAdapter);
-                rssItemsList.deferNotifyDataSetChanged();
+                rssItemsList.deferNotifyDataSetChanged();*/
 
                 return true;
 

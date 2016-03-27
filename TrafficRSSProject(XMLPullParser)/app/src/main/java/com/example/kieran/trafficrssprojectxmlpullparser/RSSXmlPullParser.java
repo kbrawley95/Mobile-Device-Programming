@@ -20,12 +20,12 @@ import java.util.List;
  */
 public class RSSXmlPullParser {
 
-    private static String xmlDoc="http://trafficscotland.org/rss/feeds/roadworks.aspx";
-    static final String KEY_ITEM="item";
+
     static final String KEY_TITLE="title";
     static final String KEY_DESCRIPTION="description";
     static final String KEY_LINK="link";
     static final String KEY_PUBLICATION_DATE="pubDate";
+    static final String KEY_COORDINATES="georss:point";
 
     public static List<RSSItem>getRSSItemsFromFile(XmlPullParser myParser) {
         List<RSSItem> result = new ArrayList<RSSItem>();
@@ -47,7 +47,7 @@ public class RSSXmlPullParser {
                     case XmlPullParser.END_TAG:
                         if (name.equals(KEY_TITLE))
                         {
-                            RSSItem temp = new RSSItem("", "","","");
+                            RSSItem temp = new RSSItem("", "","","", "");
                             result.add(temp);
                             result.get(counter).setTitle(text);
                         }
@@ -57,7 +57,11 @@ public class RSSXmlPullParser {
                         else if (name.equals(KEY_LINK))
                         {
                             result.get(counter).setLink(text);
-                        } else if (name.equals(KEY_PUBLICATION_DATE))
+                        }else if (name.equals(KEY_COORDINATES))
+                        {
+                            result.get(counter).setGeorssPoint(text);
+                        }
+                        else if (name.equals(KEY_PUBLICATION_DATE))
                         {
                             result.get(counter).setPubDate(text);
                             counter++;
@@ -67,12 +71,14 @@ public class RSSXmlPullParser {
 
                 event = myParser.next();
             }
+
         }
         catch (Exception e)
         {
             Log.e("Results", "Couldn't do xmlParsing " + e);
         }
 
+        
         return result;
     }
 }
