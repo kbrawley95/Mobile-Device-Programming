@@ -1,12 +1,8 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,17 +10,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
-import java.nio.channels.FileChannel;
+import java.text.Format;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class PlannedRoadworks extends AppCompatActivity {
 
     ArrayList<RSSItem> rssItemsArray;
     RSSAdapter rssAdapter;
     ListView rssItemsList;
-
     SearchView searchView;
 
     @Override
@@ -34,11 +29,14 @@ public class PlannedRoadworks extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         Log.i("RSSFeed", "starting download Task");
         DownloadFile();
 
         //Get reference to our ListView
         rssItemsList = (ListView)findViewById(R.id.plannedRSSList);
+
 
         //Set the click listener to launch the browser when a row is clicked.
         rssItemsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,24 +60,12 @@ public class PlannedRoadworks extends AppCompatActivity {
                 String uri = String.format("geo:"+ coords);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(intent);
-
-
-          /*      String description=rssItemsArray.get(pos).getDescription();
-
-                AlertDialog.Builder builder=new AlertDialog.Builder(PlannedRoadworks.this);
-                builder.setMessage(description);
-                AlertDialog alert=builder.create();
-                alert.show();
-
-                rssItemsList.setAdapter(rssAdapter);
-                rssItemsList.deferNotifyDataSetChanged();*/
-
                 return true;
 
             }
         });
 
-        searchView=(SearchView)findViewById(R.id.searchView);
+        searchView=(SearchView)findViewById(R.id.plannedRoadworkSearch);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -89,16 +75,43 @@ public class PlannedRoadworks extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String query) {
 
-                ArrayList<RSSItem> filteredResults = new ArrayList<RSSItem>();
+                final ArrayList<RSSItem> filteredResults = new ArrayList<RSSItem>();
                 for (int i = 0; i < rssItemsArray.size(); i++) {
                     if (rssItemsArray.get(i).getTitle().toLowerCase().contains(query.toLowerCase())) {
                         filteredResults.add(rssItemsArray.get(i));
+
                     }
                 }
+
+                rssItemsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String url = filteredResults.get(position).getLink();
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        startActivity(i);
+                    }
+                });
+
+                //Set the click listener to launch the browser when a row is clicked.
+                rssItemsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
+
+                        String coords = filteredResults.get(pos).getGeorssPoint();
+                        String uri = String.format("geo:" + coords);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                        startActivity(intent);
+                        return true;
+
+                    }
+                });
+
                 rssAdapter = new RSSAdapter(PlannedRoadworks.this, filteredResults);
 
                 rssItemsList.setAdapter(rssAdapter);
                 rssItemsList.deferNotifyDataSetChanged();
+
 
                 return true;
             }
@@ -111,8 +124,10 @@ public class PlannedRoadworks extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+
                     rssItemsArray = (ArrayList) RSSDownloader.DownloadFromURL("http://trafficscotland.org/rss/feeds/plannedroadworks.aspx");
                     Log.i("Results", rssItemsArray.size() + "");
+
 
                     if (rssItemsArray.size() > 0) {
                         String[] stuff = new String[rssItemsArray.size()];
@@ -122,6 +137,7 @@ public class PlannedRoadworks extends AppCompatActivity {
                             stuff[i]=rssItemsArray.get(i).getLink();
                             stuff[i]=rssItemsArray.get(i).getPubDate();
                         }
+
                         Log.i("MyApp", "Download Shit");
                         rssAdapter=new RSSAdapter(PlannedRoadworks.this, rssItemsArray);
 
@@ -131,6 +147,7 @@ public class PlannedRoadworks extends AppCompatActivity {
                                 // This code will always run on the UI thread, therefore is safe to modify UI elements.
                                 rssItemsList = (ListView) findViewById(R.id.plannedRSSList);
                                 rssItemsList.setAdapter(rssAdapter);
+                                rssItemsList.deferNotifyDataSetChanged();
                             }
                         });
                     }
@@ -141,6 +158,7 @@ public class PlannedRoadworks extends AppCompatActivity {
             }
         });
         thread.start();
+
     }
 
 }

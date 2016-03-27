@@ -18,12 +18,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/plannedRSSList"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/searchView" />
+        android:layout_below="@+id/plannedRoadworkSearch" />
 
     <SearchView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/searchView"
+        android:id="@+id/plannedRoadworkSearch"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
