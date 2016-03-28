@@ -17,6 +17,7 @@ public class MainMenu extends AppCompatActivity {
     Button recentUpdatesButton;
     Button currentRoadworks;
     Button plannedRoadworks;
+    Button ambientMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,15 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(MainMenu.this,CurrentRoadworks.class);
+                startActivity(i);
+            }
+        });
+
+        ambientMode=(Button)findViewById(R.id.ambientModeButton);
+        ambientMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainMenu.this,AmbientMode.class);
                 startActivity(i);
             }
         });

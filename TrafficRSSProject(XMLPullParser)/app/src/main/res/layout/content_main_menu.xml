@@ -15,8 +15,8 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="353dp"
-        android:layout_height="124dp"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
         android:id="@+id/recentUpdatesButton"
         android:text="@string/recentUpdatesButton"
         android:layout_above="@+id/plannedRoadworks"
@@ -24,11 +24,12 @@
         android:layout_marginBottom="20dp"
         android:layout_alignParentStart="true"
         android:layout_row="0"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_width="353dp"
-        android:layout_height="124dp"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
         android:text="@string/searchButton"
         android:id="@+id/currentRoadworks"
         android:textAlignment="center"
@@ -38,18 +39,31 @@
         android:layout_above="@+id/recentUpdatesButton"
         android:layout_marginBottom="20dp"
         android:layout_row="1"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal" />
 
     <Button
-        android:layout_width="353dp"
-        android:layout_height="124dp"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
         android:text="@string/plannedRoadworks"
         android:id="@+id/plannedRoadworks"
         android:textAlignment="center"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/recentUpdatesButton"
         android:layout_alignEnd="@+id/recentUpdatesButton"
+        android:layout_marginBottom="20dp"
         android:layout_row="2"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ambientModeButtonText"
+        android:id="@+id/ambientModeButton"
+        android:textAlignment="center"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_gravity="center_horizontal" />
 
 </GridLayout>

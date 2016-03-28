@@ -14,4 +14,6 @@
     <string name="plannedRoadworks">Planned Roadworks</string>
     <string name="title_activity_planned_roadworks">Planned Roadworks (S1433740)</string>
     <string name="title_activity_current_roadworks">CurrentRoadworks (S1433740)</string>
+    <string name="title_activity_ambient_mode">AmbientMode</string>
+    <string name="ambientModeButtonText">Ambient Mode</string>
 </resources>

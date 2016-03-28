@@ -1,6 +1,7 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import java.util.logging.LogRecord;
  * Created by Kieran Brawley. Matric No:S1433740
  */
 public class RSSAdapter extends ArrayAdapter<RSSItem>{
-
+    private int[] colors = new int[] { 0x30FF0000, 0x300000FF };
 
  /*   public RSSAdapter(Context context, ArrayList<RSSItem> results){
         super(context,0,results);
@@ -30,7 +31,6 @@ public class RSSAdapter extends ArrayAdapter<RSSItem>{
 
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
-
         RelativeLayout row=(RelativeLayout)convertView;
 
         //Check if an existing view is being reused, otherwise inflate the view
@@ -51,8 +51,15 @@ public class RSSAdapter extends ArrayAdapter<RSSItem>{
             linkText.setText(getItem(pos).getLink());
             pubDateText.setText(getItem(pos).getPubDate());
 
+
         return row;
     }
+
+    public void setRowColor(View view, int i ){
+        view.setBackgroundColor(colors[i]);
+    }
+
+
 }
 
 
