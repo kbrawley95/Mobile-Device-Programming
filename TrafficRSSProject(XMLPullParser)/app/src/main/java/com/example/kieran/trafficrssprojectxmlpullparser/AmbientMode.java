@@ -1,5 +1,7 @@
 package com.example.kieran.trafficrssprojectxmlpullparser;
 
+import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -62,10 +64,16 @@ public class AmbientMode extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
 
-                String coords = totalResults.get(pos).getGeorssPoint();
+            /*    String coords = totalResults.get(pos).getGeorssPoint();
                 String uri = String.format("geo:" + coords);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(intent);
+                startActivity(intent);*/
+                String description=totalResults.get(pos).getDescription();
+
+                AlertDialog .Builder builder=new AlertDialog.Builder(view.getContext());
+                builder.setMessage(description);
+                builder.show();
+
                 return true;
 
             }
@@ -103,11 +111,19 @@ public class AmbientMode extends AppCompatActivity {
                 rssItemsList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
-
+/*
                         String coords = filteredResults.get(pos).getGeorssPoint();
                         String uri = String.format("geo:" + coords);
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
                         startActivity(intent);
+                        return true;*/
+
+                        String description=filteredResults.get(pos).getDescription();
+
+                        AlertDialog .Builder builder=new AlertDialog.Builder(view.getContext());
+                        builder.setMessage(description);
+                        builder.show();
+
                         return true;
 
                     }
